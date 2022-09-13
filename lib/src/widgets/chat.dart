@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_chat_types/flutter_chat_types.dart' as types;
 import 'package:intl/intl.dart';
@@ -497,10 +495,7 @@ class ChatState extends State<Chat> {
     } else {
       final map = object as Map<String, Object>;
       final message = map['message']! as types.Message;
-      final messageWidth =
-          widget.showUserAvatars && message.author.id != widget.user.id
-              ? min(constraints.maxWidth * 0.72, 440).floor()
-              : min(constraints.maxWidth * 0.78, 440).floor();
+      final messageWidth = constraints.maxWidth.floor() - 36;
 
       return AutoScrollTag(
         controller: _scrollController,
